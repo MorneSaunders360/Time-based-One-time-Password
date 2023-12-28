@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/api.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/local_Cache.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/timers.js"></script>
+    <script src="js/uicontrols.js"></script>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    <div id="tokenFormContainer">
+        <form id="tokenForm">
+            <div class="form-group">
+                <label for="baseUrl">API URL:</label>
+                <input type="text" id="baseUrl" class="form-control" placeholder="Enter URL" required>
+            </div>
+            <div class="form-group">
+                <label for="bearerToken">Access Token:</label>
+                <input type="text" id="bearerToken" class="form-control" placeholder="Enter Token" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+    <div id="pinSetupContainer" style="display: none;">
+        <form id="pinSetupForm">
+            <div class="form-group">
+                <label for="pinInput">Enter a 4-digit PIN:</label>
+                <input type="password" id="pinInput" class="form-control" maxlength="4" pattern="\d{4}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Set PIN</button>
+        </form>
+    </div>
+    <div id="pinEntryContainer" class="pin-entry-container" style="display: none;">
+        <form id="pinEntryForm" class="pin-entry-form">
+            <h2>Enter Your PIN</h2>
+            <div class="form-group">
+                <label for="pinEntry">PIN:</label>
+                <input type="password" id="pinEntry" class="form-control" maxlength="4" pattern="\d{4}" required placeholder="****">
+            </div>
+            <div id="pinError" class="error-message"></div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="reset-pin">
+                <a href="#" id="resetPinLink">Reset PIN</a>
+            </div>
+        </form>
+    </div>
+    <div id="controlsContainer" style="display: none;">
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Search accounts...">
+        </div>
+        <button id="logOutButton" title="Log Out">
+            <i class="fas fa-sign-out-alt"></i> <!-- Assuming you are using Font Awesome for the icon -->
+        </button>
+    </div>
+    <div class="progress" id="ProgressBarDiv"  style="display: none;">
+        <div class="progress-bar" id="countdownProgressBar" >
+            <span id="countdownLabel">30</span>
+        </div>
+    </div>
+    <div id="countdownTimer" style="display: none;">Refreshing in <span id="timerValue">30</span> seconds</div>
+    <div id="loader" class="loader" style="display: none;"></div>
+    <div id="accountsList" style="display: none;">
+        
+        <!-- Accounts with OTPs and timers will be dynamically added here -->
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
