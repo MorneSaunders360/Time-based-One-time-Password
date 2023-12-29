@@ -45,7 +45,16 @@ function showCopyConfirmation() {
         confirmationMessage.remove();
     }, 2000); // Message disappears after 2 seconds
 }
+function showErrorMessage(text) {
+    const showErrorMessage = document.createElement('div');
+    showErrorMessage.textContent = text;
+    showErrorMessage.id = 'showErrorMessage';
+    document.body.appendChild(showErrorMessage);
 
+    setTimeout(() => {
+        showErrorMessage.remove();
+    }, 2000); // Message disappears after 2 seconds
+}
 function toggleOTPDisplay(otpDiv, fullOTP) {
     if (otpDiv.textContent.includes('•')) {
         otpDiv.textContent = fullOTP; // Show full OTP

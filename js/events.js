@@ -4,9 +4,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const token = document.getElementById('bearerToken').value;
         const baseUrl = document.getElementById('baseUrl').value;
         
-        chrome.storage.local.set({ 'bearerToken': token,'baseUrl': baseUrl}, function() {
-            displayPinForm();
+        VerifyAccount(baseUrl,baseUrl).then(function(result) {
+            // use the result here
+            console.log(result)
+            if(result.email!="")
+            {
+                chrome.storage.local.set({ 'bearerToken': token,'baseUrl': baseUrl}, function() {
+                    displayPinForm();
+                });
+            }
+            else
+            {
+                showErrorMessage('BaseUrl Or Access Token is incorrect')
+            }
         });
+      
+        
+        
     });
     document.getElementById('pinSetupForm').addEventListener('submit', function(e) {
         e.preventDefault();

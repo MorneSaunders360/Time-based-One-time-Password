@@ -31,3 +31,16 @@ function fetchOTP(account,baseUrl, token) {
         return { ...account, otp: data.password };
     });
 }
+function VerifyAccount(baseUrl, token) {
+    return fetch(baseUrl+`/api/v1/user`, {
+        headers: { 'Authorization': 'Bearer ' + token }
+    })
+    .then(response => response.json())
+    .then(data => {
+        return { email: data.email };
+    })
+    .catch(error => 
+        {
+            return {email:""};
+        });
+}
